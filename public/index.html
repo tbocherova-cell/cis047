@@ -1,84 +1,347 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Tetyana Bocherova | Student Portfolio</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inria+Serif:wght@400;700&display=swap" rel="stylesheet">
 
-    <style>
-        body {
-           
-           font-family: "Inria Serif", Georgia, serif;
-           background: #faf6f1;
-           color: #1e4b53;
-        }
-/* Responsive styles for better accessibility on small screens */
-       h1 {
-    text-align: center;
-    border: solid thin #113262;
-    border-radius: 15px;
-    background: #1e4b53;
-    color: #faf6f1;
-    width: 90%;
-    max-width: 500px;
-    box-sizing: border-box;
-    margin: auto;
-}
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inria+Serif:wght@400;700&display=swap"
+        rel="stylesheet">
 
+    <link rel="stylesheet" href="styles.css">
 
-main {
-    display: block;
-    width: 90%;
-    max-width: 700px;
-    box-sizing: border-box;
-    margin: 2em auto;
-    border: solid thin #1e4b53;
-    border-radius: 15px;
-    padding: 1em;
-}
-        
-       a:link {
-    color: #113262;
-}
-
-a:visited {
-    color: #1e4b53;
-}
-.personal-logo {
-    display: block;
-    width: 100px;
-    max-width: 80%;
-    height: auto;
-    margin: 0 auto 1.5em;
-}
-footer {
-    text-align: center;
-    margin-top: 2em;
-}
-    </style>
+    <script src="script.js" defer></script>
 </head>
+
+
 <body>
-   <h1>Welcome to Tetyana's Website!</h1>
 
-<main>
-    <img class="personal-logo"
-         src="tetyana-logo.png"
-         alt="Tetyana Bocherova TB logo with a peacock feather">
+    <header class="site-header">
 
-    <p>Hi! My name is Tetyana.</p>
-    <p>I am currently enrolled in CIS 047 taught at San Jos&eacute; City College.</p>
-    <p>I am originally from Ukraine, and I currently live in San Jose, California.</p>
-    <p>My interests include UX/UI design, web development, hiking, chess and ballroom dancing.</p>
-    <p>I hope to learn how to create clear, accessible, and well-structured websites.</p>
-</main>
+        <nav class="site-nav" aria-label="Main navigation">
 
-   <footer>
-    <p>&copy; 2026 Tetyana Bocherova. All rights reserved.</p>
-</footer>
+            <a class="site-name" href="#top">
+                Tetyana Bocherova
+            </a>
+
+            <ul>
+                <li>
+                    <a href="#about">About</a>
+                </li>
+
+                <li>
+                    <a href="#interests">Interests</a>
+                </li>
+
+                <li>
+                    <a href="#goals">Goals</a>
+                </li>
+
+                <li>
+                    <button
+                        class="theme-button"
+                        type="button"
+                        id="theme-toggle"
+                        aria-pressed="false">
+                        Dark Mode
+                    </button>
+                </li>
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <main id="top">
+
+        <!-- About / Hero -->
+
+        <section class="hero" id="about">
+
+            <img
+                class="personal-photo"
+                src="tetyana-photo.jpg"
+                alt="Portrait of Tetyana Bocherova">
+
+            <div>
+
+                <p class="eyebrow">
+                    Student Portfolio
+                </p>
+
+                <h1>
+                    Welcome to Tetyana's Website!
+                </h1>
+
+                <p class="intro">
+                    Hi! I’m Tetyana from Ukraine, now living in San Jose.
+                    I study User Experience and Interaction Design at
+                    San Jos&eacute; City College.
+                </p>
+
+                <div class="hero-actions">
+
+                    <a class="button" href="#interests">
+                        Explore My Interests
+                    </a>
+
+                    <a class="button" href="#goals">
+                        Explore My Education Goals
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Interests -->
+
+        <section id="interests" aria-labelledby="interests-title">
+
+            <h2 id="interests-title">
+                My Interests
+            </h2>
+
+
+            <!-- Interest filters -->
+
+            <div class="interest-filters" aria-label="Filter interests">
+
+                <button
+                    class="filter-button active"
+                    type="button"
+                    data-filter="all">
+                    Show All
+                </button>
+
+                <button
+                    class="filter-button"
+                    type="button"
+                    data-filter="ux">
+                    UX/UI
+                </button>
+
+                <button
+                    class="filter-button"
+                    type="button"
+                    data-filter="web">
+                    Web Development
+                </button>
+
+                <button
+                    class="filter-button"
+                    type="button"
+                    data-filter="hobbies">
+                    Life &amp; Hobbies
+                </button>
+
+            </div>
+
+
+            <!-- Interest cards -->
+
+            <div class="card-grid">
+
+
+                <!-- UX/UI Design -->
+
+                <article class="card" data-category="ux">
+
+                    <h3>
+                        UX/UI Design
+                    </h3>
+
+                    <p>
+                        I enjoy designing experiences that are clear,
+                        useful, and easy to navigate.
+                    </p>
+
+                    <button
+                        class="interest-button"
+                        type="button"
+                        id="ux-toggle"
+                        aria-controls="ux-more"
+                        aria-expanded="false">
+                        Learn More
+                    </button>
+
+                    <p id="ux-more" hidden>
+                        I am especially interested in user research,
+                        interaction design, wireframes, prototypes,
+                        and creating accessible digital experiences.
+                    </p>
+
+                </article>
+
+
+                <!-- Web Development -->
+
+                <article class="card" data-category="web">
+
+                    <h3>
+                        Web Development
+                    </h3>
+
+                    <p>
+                        I am learning how HTML and CSS work together
+                        to create accessible websites.
+                    </p>
+
+                    <button
+                        class="interest-button"
+                        type="button"
+                        id="web-toggle"
+                        aria-controls="web-more"
+                        aria-expanded="false">
+                        Learn More
+                    </button>
+
+                    <p id="web-more" hidden>
+                        I am learning how to use semantic HTML,
+                        responsive CSS, Flexbox, Grid, and JavaScript
+                        to create interactive and accessible websites.
+                    </p>
+
+                </article>
+
+
+                <!-- Life & Hobbies -->
+
+                <article class="card" data-category="hobbies">
+
+                    <h3>
+                        Life &amp; Hobbies
+                    </h3>
+
+                    <p>
+                        Outside of school, I enjoy hiking,
+                        chess, and ballroom dancing.
+                    </p>
+
+                    <button
+                        class="interest-button"
+                        type="button"
+                        id="hobby-button"
+                        aria-controls="favorite-hobby"
+                        aria-expanded="false">
+                        Learn More
+                    </button>
+
+                    <p id="favorite-hobby" hidden>
+                        I enjoy playing chess, hiking in nature,
+                        and ballroom dancing. Chess is especially
+                        meaningful to me and has also inspired
+                        my children's book project.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- Learning Goals -->
+
+        <section
+            class="goal"
+            id="goals"
+            aria-labelledby="goals-title">
+
+            <h2 id="goals-title">
+                My Learning Goal
+            </h2>
+
+            <p>
+                I am currently enrolled in CIS 047 at
+                San Jos&eacute; City College. I hope to learn
+                how to create clear, accessible, responsive,
+                and well-structured websites.
+            </p>
+
+
+            <button
+                class="button goals-button"
+                type="button"
+                id="goals-toggle"
+                aria-controls="extra-goals"
+                aria-expanded="false">
+                Show My 2026–2027 Goals
+            </button>
+
+
+            <div id="extra-goals" hidden>
+
+                <h3>
+                    My Main Goals for 2026–2027
+                </h3>
+
+                <ol>
+                    <li>
+                        Earn an A.S. in User Experience and
+                        Interaction Design from
+                        San Jos&eacute; City College.
+                    </li>
+
+                    <li>
+                        Find a job in the IT field that aligns
+                        with my education and previous
+                        professional experience.
+                    </li>
+
+                    <li>
+                        Transfer to a university to continue
+                        my education.
+                    </li>
+
+                    <li>
+                        Publish a children's book about chess.
+                    </li>
+
+                    <li>
+                        Start an evening dress rental business.
+                    </li>
+                </ol>
+
+            </div>
+
+
+            <a
+                href="https://sjcc.edu/"
+                target="_blank"
+                rel="noopener noreferrer">
+                Visit San Jos&eacute; City College
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+            Tetyana Bocherova. All rights reserved.
+        </p>
+
+        <p id="current-date"></p>
+
+        <p id="current-time"></p>
+
+    </footer>
+
 
 </body>
+
 </html>
