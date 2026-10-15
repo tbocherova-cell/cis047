@@ -13,6 +13,23 @@
       <h1>Welcome to My Creative Studio!</h1>
 
       <p>
+        <!--#if expr="%{TIME_WDAY} -eq 1" -->Happy Monday! Monday again? Let's
+        pretend we're excited!
+        <!--#elif expr="%{TIME_WDAY} -eq 2" -->Happy Tuesday! Still waiting for
+        Friday...
+        <!--#elif expr="%{TIME_WDAY} -eq 3" -->Happy Wednesday! Halfway to
+        freedom!
+        <!--#elif expr="%{TIME_WDAY} -eq 4" -->Happy Thursday! Friday is
+        loading... 90%
+        <!--#elif expr="%{TIME_WDAY} -eq 5" -->Happy Friday! My brain has left
+        the chat.
+        <!--#elif expr="%{TIME_WDAY} -eq 6" -->Happy Saturday! No alarms, no
+        deadlines!
+        <!--#else -->Happy Sunday! Tomorrow is a Monday problem.
+        <!--#endif -->
+      </p>
+
+      <p>
         This website is about my journey in web development, UX/UI design, and
         creativity.
       </p>

@@ -1,4 +1,14 @@
 <footer class="site-footer">
+  <p class="time-greeting">
+    <!--#if expr="%{TIME_HOUR} < 12" -->
+    Good morning! Coffee first, code second! ☕
+    <!--#elif expr="%{TIME_HOUR} < 17" -->
+    Good afternoon! Keep calm and keep coding! 💻
+    <!--#else -->
+    Good evening! One more line of code... and then sleep! 🌙
+    <!--#endif -->
+  </p>
+
   <p>
     Copyright &copy;
     <!--#config timefmt="%Y" --><!--#echo var="DATE_LOCAL" -->

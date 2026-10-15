@@ -68,3 +68,11 @@ main {
 .site-footer {
   margin-top: 0;
 }
+
+/* Time-of-day greeting */
+.time-greeting {
+  font-size: 18px;
+  font-weight: 600;
+  color: #007681;
+  margin-bottom: 18px;
+}
