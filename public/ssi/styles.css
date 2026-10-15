@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Inria+Serif:wght@400;700&family=Inter:wght@400;500;600;700&display=swap");
+
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background-color: #f8fcfb;
+  color: #102a43;
+  line-height: 1.7;
+}
+
+.site-header {
+  background-color: #102a43;
+  color: #ffffff;
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.site-name {
+  font-family: "Inria Serif", serif;
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0;
+}
+
+main {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 32px 24px;
+}
+
+h1 {
+  font-family: "Inria Serif", serif;
+  font-size: clamp(32px, 5vw, 46px);
+  color: #006d77;
+  line-height: 1.2;
+}
+
+main p {
+  font-size: 17px;
+}
+
+.site-footer {
+  background-color: #e8f5f3;
+  color: #102a43;
+  text-align: center;
+  padding: 28px 20px;
+  margin-top: 50px;
+  border-top: 3px solid #00a6a6;
+}
+
+.site-footer p {
+  margin: 8px 0;
+}
+
+/* Center content and align page layout */
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  text-align: center;
+}
+
+.site-footer {
+  margin-top: 0;
+}

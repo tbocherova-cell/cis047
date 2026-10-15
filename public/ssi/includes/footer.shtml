@@ -1,0 +1,11 @@
+<footer class="site-footer">
+  <p>
+    Copyright &copy;
+    <!--#config timefmt="%Y" --><!--#echo var="DATE_LOCAL" -->
+    Tetyana Bocherova
+  </p>
+  <p>
+    Last updated:
+    <!--#config timefmt="%B %e, %Y" --><!--#echo var="LAST_MODIFIED" -->
+  </p>
+</footer>

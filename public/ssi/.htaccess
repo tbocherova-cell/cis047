@@ -1,0 +1,4 @@
+Options +IncludesNOEXEC
+AddType text/html .shtml
+AddOutputFilter INCLUDES .shtml
+

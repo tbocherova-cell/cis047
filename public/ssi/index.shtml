@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tetyana's Creative Studio</title>
+    <link rel="stylesheet" href="/ssi/styles.css" />
+  </head>
+  <body>
+    <!--#include file="includes/header.html" -->
+
+    <main>
+      <h1>Welcome to My Creative Studio!</h1>
+
+      <p>
+        This website is about my journey in web development, UX/UI design, and
+        creativity.
+      </p>
+
+      <p>
+        It's currently
+        <!--#config timefmt="%A, %B %e, %Y, at %I:%M:%S %p %Z" -->
+        <!--#echo var="DATE_LOCAL" -->.
+      </p>
+    </main>
+
+    <!--#include file="includes/footer.shtml" -->
+  </body>
+</html>
