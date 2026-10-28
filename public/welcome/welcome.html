@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Build Your Welcome Page</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 3rem 1rem;
+        font-family: "Inria Serif", Georgia, serif;
+        font-size: 20px;
+        line-height: 1.6;
+        background-color: #173f46;
+        color: #173f46;
+      }
+
+      h1 {
+        font-size: 2.2rem;
+        line-height: 1.2;
+        max-width: 30rem;
+        margin: 0 auto 1.5rem;
+        color: #ffffff;
+      }
+
+      form {
+        max-width: 30rem;
+        margin: 0 auto;
+        padding: 2rem;
+        background-color: #ffffff;
+        border: 1px solid #d7dedc;
+        border-radius: 14px;
+        box-shadow: 0 6px 20px rgba(23, 63, 70, 0.08);
+      }
+
+      label {
+        display: block;
+        margin-top: 1rem;
+        font-weight: bold;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        padding: 0.4rem;
+        box-sizing: border-box;
+      }
+
+      select {
+        display: block;
+        width: 100%;
+        padding: 0.5rem;
+        margin-top: 0.5rem;
+        box-sizing: border-box;
+      }
+
+      button {
+        display: block;
+        margin-top: 1.5rem;
+        padding: 0.8rem 1.5rem;
+        background-color: #173f46;
+        color: #ffffff;
+        border: none;
+        border-radius: 8px;
+        font-family: inherit;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+      }
+
+      button:hover {
+        background-color: #28636b;
+      }
+
+      button:focus-visible {
+        outline: 3px solid #f2b705;
+        outline-offset: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Build Your Welcome Page</h1>
+
+    <form method="get" action="welcome.php">
+      <label for="background">Background color:</label>
+      <input type="color" id="background" name="background" value="#ffffff" />
+
+      <label for="text">Text color:</label>
+      <input type="color" id="text" name="text" value="#1a1a1a" />
+
+      <label for="name">Your name:</label>
+      <input type="text" id="name" name="name" autocomplete="name" required />
+
+      <label for="class">Class name:</label>
+      <input type="text" id="class" name="class" required />
+
+      <label for="teacher">Teacher's name:</label>
+      <input type="text" id="teacher" name="teacher" required />
+
+      <label for="school">School name:</label>
+      <input type="text" id="school" name="school" required />
+
+      <label for="goal">Your career goal:</label>
+      <input
+        type="text"
+        id="goal"
+        name="goal"
+        placeholder="e.g., UX/UI Designer"
+      />
+
+      <label for="font">Choose a font:</label>
+      <select id="font" name="font">
+        <option value="sans">Sans-serif</option>
+        <option value="serif">Serif</option>
+        <option value="mono">Monospace</option>
+      </select>
+
+      <button type="submit">Show my welcome page</button>
+    </form>
+  </body>
+</html>
