@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Lookup</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 48px 24px;
+        background: #faf6f1;
+        color: #173f46;
+        font-family: Georgia, serif;
+        font-size: 20px;
+        line-height: 1.6;
+      }
+
+      main {
+        max-width: 640px;
+        margin: 0 auto;
+        padding: 32px;
+        background: #ffffff;
+        border-radius: 20px;
+        box-shadow: 0 8px 24px rgb(23 63 70 / 10%);
+      }
+
+      h1 {
+        margin-top: 0;
+        line-height: 1.2;
+      }
+
+      label {
+        display: block;
+        margin-top: 24px;
+        margin-bottom: 8px;
+      }
+
+      input,
+      select,
+      button {
+        width: 100%;
+        padding: 14px;
+        border: 2px solid #173f46;
+        border-radius: 10px;
+        font: inherit;
+      }
+
+      input,
+      select {
+        background: #ffffff;
+        color: #173f46;
+      }
+
+      button {
+        margin-top: 28px;
+        background: #173f46;
+        color: #ffffff;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background: #9c4f35;
+        border-color: #9c4f35;
+      }
+
+      input:focus-visible,
+      select:focus-visible,
+      button:focus-visible {
+        outline: 3px solid #f2b705;
+        outline-offset: 4px;
+      }
+
+      .hint,
+      footer {
+        font-size: 16px;
+      }
+
+      footer {
+        margin-top: 28px;
+      }
+
+      a {
+        color: #173f46;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <h1>Weather Lookup</h1>
+      <p>Explore the current weather in a city.</p>
+
+      <form action="weather.php" method="post">
+        <label for="city">City name</label>
+        <input
+          type="text"
+          id="city"
+          name="city"
+          placeholder="San Jose"
+          minlength="2"
+          maxlength="100"
+          aria-describedby="city-hint"
+          required
+        >
+        <p id="city-hint" class="hint">
+          Enter a city, such as San Jose, Seattle, or Paris.
+          Check the matched location on the results page.
+        </p>
+
+        <label for="units">Temperature units</label>
+        <select id="units" name="units">
+          <option value="fahrenheit">Fahrenheit (°F)</option>
+          <option value="celsius">Celsius (°C)</option>
+        </select>
+
+        <button type="submit">Get Weather</button>
+      </form>
+
+      <footer>
+        Weather data by
+        <a href="https://open-meteo.com/">Open-Meteo</a>.
+        Location information based on GeoNames.
+      </footer>
+    </main>
+  </body>
+</html>
