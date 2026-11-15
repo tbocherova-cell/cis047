@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Distance to SJCC</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 48px 24px;
+        background: #faf6f1;
+        color: #173f46;
+        font-family: Georgia, serif;
+        font-size: 20px;
+        line-height: 1.6;
+      }
+
+      header,
+      main {
+        max-width: 760px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        font-size: clamp(2rem, 5vw, 3rem);
+        line-height: 1.2;
+      }
+
+      main {
+        padding: 32px;
+        background: #ffffff;
+        border-radius: 20px;
+        box-shadow: 0 8px 24px rgb(23 63 70 / 10%);
+      }
+
+      button,
+      select {
+        padding: 14px 20px;
+        border: 2px solid #173f46;
+        border-radius: 10px;
+        font: inherit;
+      }
+
+      button {
+        background: #173f46;
+        color: #ffffff;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background: #9c4f35;
+        border-color: #9c4f35;
+      }
+
+      button:active {
+        transform: translateY(1px);
+      }
+
+      button:disabled {
+        opacity: 0.7;
+        cursor: wait;
+      }
+
+      button:focus-visible,
+      select:focus-visible {
+        outline: 3px solid #f2b705;
+        outline-offset: 4px;
+      }
+
+      .unit-control {
+        margin: 24px 0;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      select {
+        max-width: 100%;
+        background: #ffffff;
+        color: #173f46;
+      }
+
+      #output {
+        padding-top: 16px;
+        border-top: 1px solid #d7e0df;
+        white-space: pre-line;
+        overflow-wrap: anywhere;
+      }
+
+      .note {
+        font-size: 16px;
+      }
+      header {
+        text-align: center;
+      }
+      header h1 {
+        margin-bottom: 12px;
+      }
+
+      header p {
+        margin-top: 0;
+        margin-bottom: 32px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>How far am I from SJCC?</h1>
+      <p>Find your distance to San José City College.</p>
+    </header>
+
+    <main>
+      <button id="location-button" type="button">Calculate distance</button>
+
+      <div class="unit-control">
+        <label for="unit-select">Distance units</label>
+        <select id="unit-select">
+          <option value="km">Kilometers</option>
+          <option value="mi">Miles</option>
+        </select>
+      </div>
+
+      <p id="output" role="status">
+        Click the button to calculate your distance.
+      </p>
+
+      <p class="note">
+        Distance is measured in a straight line, not along roads. Location
+        accuracy may vary.
+      </p>
+    </main>
+
+    <script>
+      const locationButton = document.getElementById("location-button");
+      const unitSelect = document.getElementById("unit-select");
+      const output = document.getElementById("output");
+
+      const sjccLatitude = 37.314712;
+      const sjccLongitude = -121.927172;
+
+      let currentLatitude = null;
+      let currentLongitude = null;
+      let distanceKm = null;
+
+      function calculateDistance(lat1, lon1, lat2, lon2) {
+        const earthRadius = 6371;
+
+        function toRadians(degrees) {
+          return (degrees * Math.PI) / 180;
+        }
+
+        const latitudeDifference = toRadians(lat2 - lat1);
+        const longitudeDifference = toRadians(lon2 - lon1);
+
+        const a =
+          Math.sin(latitudeDifference / 2) ** 2 +
+          Math.cos(toRadians(lat1)) *
+            Math.cos(toRadians(lat2)) *
+            Math.sin(longitudeDifference / 2) ** 2;
+
+        const safeA = Math.min(1, Math.max(0, a));
+        const c = 2 * Math.atan2(Math.sqrt(safeA), Math.sqrt(1 - safeA));
+
+        return earthRadius * c;
+      }
+
+      function displayResult() {
+        if (distanceKm === null) {
+          return;
+        }
+
+        const useMiles = unitSelect.value === "mi";
+        const distance = useMiles ? distanceKm * 0.621371 : distanceKm;
+        const unit = useMiles ? "miles" : "km";
+
+        output.textContent =
+          "Latitude: " +
+          currentLatitude.toFixed(6) +
+          "\nLongitude: " +
+          currentLongitude.toFixed(6) +
+          "\nDistance to SJCC: " +
+          distance.toFixed(2) +
+          " " +
+          unit;
+      }
+
+      locationButton.addEventListener("click", function () {
+        if (!navigator.geolocation) {
+          output.textContent = "Your browser does not support geolocation.";
+          return;
+        }
+
+        output.textContent = "Getting your location...";
+        locationButton.disabled = true;
+        distanceKm = null;
+
+        navigator.geolocation.getCurrentPosition(
+          function (position) {
+            currentLatitude = position.coords.latitude;
+            currentLongitude = position.coords.longitude;
+
+            distanceKm = calculateDistance(
+              currentLatitude,
+              currentLongitude,
+              sjccLatitude,
+              sjccLongitude,
+            );
+
+            locationButton.disabled = false;
+            displayResult();
+          },
+          function (error) {
+            locationButton.disabled = false;
+
+            if (error.code === 1) {
+              output.textContent =
+                "Location access was denied. Allow location access to calculate your distance.";
+            } else if (error.code === 2) {
+              output.textContent =
+                "Your location is unavailable. Please try again.";
+            } else {
+              output.textContent =
+                "The location request timed out. Please try again.";
+            }
+          },
+          { timeout: 15000 },
+        );
+      });
+
+      unitSelect.addEventListener("change", displayResult);
+    </script>
+  </body>
+</html>
